@@ -1,26 +1,33 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import TempCard from "./TempCard";
 
 function LoggedInPage() {
   const username = sessionStorage.getItem("username");
+  // Correct data structure with consistent keys
+  const data = [
+    { name: "Jan" },
+    { name: "Feb"},
+    { name: "Mar"},
+    { name: "Apr"},
+    { name: "May"},
+    { name: "Jun"},
+    { name: "Jul"},
+  ];
 
   return (
-    <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#f8f9fa" }}>
-      <Row className="w-100 justify-content-center">
-        <Col md={6} lg={4}>
-          <Card className="shadow-lg border-0">
-            <Card.Body className="text-center">
-              <h2 style={{ color: "#4a90e2" }}>Welcome, {username}!</h2>
-              <p className="mt-3">You have successfully logged in.</p>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <div style={{ backgroundColor: "#432E54", color: "#FFFFFF", minHeight: "100vh", padding: "2rem" }}>
+      <h1>Welcome, {username}!</h1>
+      {
+        data.map(item =>{
+            return <TempCard {...item} />
+        })
+      }
+    </div>
   );
 }
 
 export default LoggedInPage;
+
 
 
 

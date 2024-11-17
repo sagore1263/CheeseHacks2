@@ -19,16 +19,16 @@ function LoginPage() {
   };
 
   return (
-    <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#f8f9fa" }}>
-      <Row className="w-100 justify-content-center">
+    <Container fluid  style={{ backgroundColor: "#432E54" }}>
+      <Row >
         <Col md={6} lg={4}>
-          <Card className="shadow-lg border-0">
+          <Card>
             <Card.Body>
-              <h2 className="text-center mb-4" style={{ color: "#4a90e2" }}>Welcome Back!</h2>
+              <h2 style={{ color: "#4a90e2" }}>Welcome Back!</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form>
                 <Form.Group controlId="username" className="mb-3">
-                  <Form.Label>Username</Form.Label>
+                  <Form.Label>Username </Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Enter your username"
@@ -37,7 +37,7 @@ function LoginPage() {
                   />
                 </Form.Group>
                 <Form.Group controlId="pin" className="mb-3">
-                  <Form.Label>7-Digit PIN</Form.Label>
+                  <Form.Label>7-Digit PIN </Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Enter your PIN"
