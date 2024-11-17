@@ -34,21 +34,10 @@ function LoggedInPage(props) {
 
     fetchData();
   }, []);
-  // Correct data structure with consistent keys
-  const data = [
-    { name: "Jan", uv: 4000, pv: 2400 },
-    { name: "Feb", uv: 3000, pv: 1398 },
-    { name: "Mar", uv: 2000, pv: 9800 },
-    { name: "Apr", uv: 2780, pv: 3908 },
-    { name: "May", uv: 1890, pv: 4800 },
-    { name: "Jun", uv: 2390, pv: 3800 },
-    { name: "Jul", uv: 3490, pv: 4300 },
-  ];
 
   return (
-    <div style={{ backgroundColor: "#432E54", color: "#FFFFFF", minHeight: "100vh", padding: "2rem" }}>
-      <h1>Welcome, {username}!</h1>
-      <p>Here is your stock performance chart:</p>
+    <div style={{ backgroundColor: "#432E54", color: "#FFFFFF", padding: "2rem" }}>
+      <p>Here is your predicted stock performance chart for {props.name.replace(".csv","")}:</p>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           data={data2}
