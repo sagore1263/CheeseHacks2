@@ -11,7 +11,7 @@ export default function TempCard(props){
 
     return <Card style={{ backgroundColor: '#2a2a3d', padding: '1rem' } }>
     <Card.Body >
-      <Card.Title style={{ color: '#8B5DFF' }}>{props.name}</Card.Title>
+      <Card.Title style={{ color: '#8B5DFF' }}>{props.name.replace(".csv","")}</Card.Title>
       <Button
         variant="success"
         style={{
