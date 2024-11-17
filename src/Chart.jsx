@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -9,9 +9,31 @@ import {
   Tooltip,
 } from "recharts";
 
-function LoggedInPage() {
+function LoggedInPage(props) {
+  const [data2, setData] = useState([])
   const username = sessionStorage.getItem("username");
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/${props.name}`); 
+        const jsonData = await response.json();
+        let toSet = [{name: jsonData.Close[0]}]
+        for (let i = Object.values(jsonData.Close).length-100; i<Object.values(jsonData.Close).length-1; i++){
+            toSet.push({name: jsonData.Close[i]});
+        }
+        console.log("Reached")
+        console.log(jsonData.Close)
+        let clo= jsonData.Close;
+        console.log(Object.values(clo))
+        setData(toSet);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   // Correct data structure with consistent keys
   const data = [
     { name: "Jan", uv: 4000, pv: 2400 },
@@ -29,7 +51,7 @@ function LoggedInPage() {
       <p>Here is your stock performance chart:</p>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
-          data={data}
+          data={data2}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>
@@ -42,13 +64,13 @@ function LoggedInPage() {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" stroke="#FFFFFF" />
+          <XAxis stroke="#FFFFFF" />
           <YAxis stroke="#FFFFFF" />
           <CartesianGrid strokeDasharray="3 3" stroke="#4A4A65" />
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey="name"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#colorUv)"

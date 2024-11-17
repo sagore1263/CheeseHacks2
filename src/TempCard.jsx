@@ -27,7 +27,7 @@ export default function TempCard(props){
          {showGraph ? 'Hide Graph' : 'View Graph'}
       </Button>
     </Card.Body>
-    {showGraph && <Chart />}
+    {showGraph && <Chart name={props.name}/>}
   </Card>
 
 }
