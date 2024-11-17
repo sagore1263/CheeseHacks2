@@ -19,6 +19,14 @@ function LoggedInPage() {
 
   useEffect(() => {
     const fetchData = async () => {
+        const response = await fetch('http://127.0.0.1:8000/dayinc?x=1'); 
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
       try {
         const response = await fetch('http://127.0.0.1:8000/listdatasets'); 
         const jsonData = await response.json();
